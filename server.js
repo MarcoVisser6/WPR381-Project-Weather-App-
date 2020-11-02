@@ -4,6 +4,12 @@
 //Load all required modules.
 const express = require('express'); 
 var path = require('path');
+var weather = require('openweather-apis');
+
+//Set settings for open weather api:
+weather.setLang('en');
+weather.setAPPID('2af550162ed8871fabf0fed4afe2a6e6');
+weather.setUnits('metric');
 
 //Create an object for the express module.
 const app = express();
@@ -18,7 +24,14 @@ app.get('/', function (req, res) {
 
 //Receive location from front-end.
 app.post('/getLocation', function (req, res) {
-    res.send(req.body);
+    weather.setZipCode(40721);
+    weather.getTemperature(function(err, temp){
+        if (err) {
+            res.send('An error occurred: ' + err);
+        }else{
+            res.send('Current Temp: ' + temp);
+        }
+    });
 });
 
 // The second route.
