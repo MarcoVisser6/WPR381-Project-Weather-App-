@@ -1,0 +1,15 @@
+{
+  "name": "willemvandemerwe_marcovisser_prj1_wpr381",
+  "version": "1.0.0",
+  "description": "This application displays the weather based on location.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Marco Visser & Willem Van de Merwe",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
