@@ -1,24 +1,26 @@
-//API Key: 2af550162ed8871fabf0fed4afe2a6e6
+//Open Weather Map API Key: 2af550162ed8871fabf0fed4afe2a6e6
 //Load all required modules.
-//Git WORKS
-var express = require('express'); 
-var fs = require('fs');
+const express = require('express'); 
 
 //Create an object for the express module.
-var app = express();    
-var path = require("path");
+const app = express();
 
-// Our first route
+// The first route
 app.get('/', function (req, res) {
-    res.sendFile("./index.html");
+    res.sendFile('./pages/index.html',{root:__dirname});
 });
+
+// The second route
+app.get('/about', function (req, res) {
+    res.send('Second Route',{root:__dirname});
+});
+
+//Default 404 output.
+app.use(function (req, res) {
+    res.sendFile('./pages/404.html',{root:__dirname});
+})
 
 // Listen to port 5000
 app.listen(5000, function () {
-    console.log('Dev app listening on port 5000!');
-});
-
-// Our second route
-app.get('/dev', function (req, res) {
-    res.send('Hello, you are now on the Dev route!');
+    console.log('App listening on port 5000!');
 });
